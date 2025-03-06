@@ -9,7 +9,5 @@ minima:
       url: /about/
     - name: "Publication"
       url: /publication/
-    - name: "Teaching"
-      url: /teaching/
     - name: "CV"
       url: /cv/
