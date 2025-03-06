@@ -1,10 +1,6 @@
 ---
-layout: home
-title: "home page"
+layout: page
+title: "About"
 ---
-
-# Hello World
-This is GAGA's Husband
-
-## gagaga gagaggagaa
-
+# ppp
+hi it's Chenxiao Here~

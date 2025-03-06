@@ -1,4 +1,4 @@
-title: Chenxiao's Personal Website
+title: "Chenxiao's Personal Website"
 theme: minima
 
 minima:
@@ -8,7 +8,7 @@ minima:
     - name: "About"
       url: /about/
     - name: "Publication"
-      url: /Publication/
+      url: /publication/
     - name: "Teaching"
       url: /teaching/
     - name: "CV"
