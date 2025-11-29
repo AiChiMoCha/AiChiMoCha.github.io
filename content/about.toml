@@ -3,9 +3,9 @@ title = "About"
 
 [profile]
 research_interests = [
-  "Human-centered AI",
-  "Model Behavior and Interpretability",
-  "Generative Agentic Simulation",
+  "Human-centered AI and model Behavior",
+  "Agent-based and generative simulations",
+  "Interpretability and controllability",
   "AI Safety and Robustness"
 ]
 
