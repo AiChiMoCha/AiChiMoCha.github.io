@@ -125,14 +125,14 @@ function parseAuthors(authorsStr: string): Array<{ name: string; isHighlighted?:
       // Clean up the author name
       let name = author.trim();
       
-      // Check for corresponding author marker
+      // Check for corresponding author marker (*)
       const isCorresponding = name.includes('*');
       
       // Check for co-author marker (#)
       const isCoAuthor = name.includes('#');
       
       // Remove special markers from name
-      name = name.replace(/[*#]/g, '');
+      name = name.replace(/[*#]/g, '').trim();
       
       // Handle "Last, First" format
       if (name.includes(',')) {
@@ -140,12 +140,19 @@ function parseAuthors(authorsStr: string): Array<{ name: string; isHighlighted?:
         name = `${parts[1]} ${parts[0]}`;
       }
       
-      // Check if this is Jiale Liu (to highlight)
-      const isHighlighted = name.toLowerCase().includes('jiale liu') || 
-                          name.toLowerCase().includes('liu jiale');
+      // Clean the name for comparison
+      const cleanedName = cleanBibTeXString(name);
+      const nameLower = cleanedName.toLowerCase();
+      
+      // Check if this is Chenxiao Yu (to highlight)
+      // More flexible matching to handle variations
+      const isHighlighted = nameLower.includes('chenxiao yu') || 
+                          nameLower.includes('yu chenxiao') ||
+                          nameLower.includes('c. yu') ||
+                          nameLower.includes('yu, c');
       
       return {
-        name: cleanBibTeXString(name),
+        name: cleanedName,
         isHighlighted,
         isCorresponding,
         isCoAuthor,
@@ -193,6 +200,26 @@ function cleanBibTeXString(str?: string): string {
 function detectResearchArea(title: string, keywords: string[]): ResearchArea {
   const text = (title + ' ' + keywords.join(' ')).toLowerCase();
   
+  // AI Safety and LLM-related
+  if (text.includes('llm') || text.includes('language model') || 
+      text.includes('safety') || text.includes('alignment') ||
+      text.includes('hallucination') || text.includes('prompt')) {
+    return 'machine-learning';
+  }
+  
+  // Interpretability
+  if (text.includes('interpretability') || text.includes('activation') ||
+      text.includes('steering') || text.includes('mechanistic')) {
+    return 'neural-networks';
+  }
+  
+  // Simulation and agent-based
+  if (text.includes('simulation') || text.includes('agent') ||
+      text.includes('decision-making')) {
+    return 'machine-learning';
+  }
+  
+  // Original categories
   if (text.includes('healthcare') || text.includes('medical') || text.includes('health')) {
     return 'ai-healthcare';
   }
@@ -239,4 +266,4 @@ function reconstructBibTeX(entry: { entryType: string; citationKey: string; entr
   bibtex += '}';
   
   return bibtex;
-} 
+}

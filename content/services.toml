@@ -1,9 +1,15 @@
 type = "card"
 title = "Services"
-description = "Professional services and community involvement."
+description = "Professional service, reviewing, and community involvement."
+
+[[items]]
+title = "Program Committee"
+subtitle = "AAAI Conference on Artificial Intelligence (AAAI)"
+date = "2026"
+content = "Program Committee member for AAAI 2026."
 
 [[items]]
 title = "Reviewer"
-subtitle = "Journal Name"
-date = "2024"
-content = "Reviewed papers for..."
+subtitle = "International Conference on Learning Representations (ICLR)"
+date = "2026"
+content = "Reviewed submissions for ICLR 2026."

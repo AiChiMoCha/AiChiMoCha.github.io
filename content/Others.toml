@@ -1,0 +1,7 @@
+type = "card"
+title = "Others"
+description = ""
+
+[[items]]
+title = "Coming Soon"
+content = "One day... this space will no longer be empty."

@@ -1,29 +1,27 @@
 [site]
-title = "Jiale Liu"
-description = "PhD student at the University of Example."
-favicon = "/favicon.svg"
-last_updated = "November 18, 2025"
+title = "Chenxiao Yu"
+description = "Student at the University of Southern California."
+favicon = "/favicon_io/favicon.ico" 
+last_updated = "November 29, 2025"
 
 [author]
-name = "Jiale Liu"
-title = "PhD Student"
-institution = "University of Example"
+name = "Chenxiao Yu"
+title = "M.S. Student in Applied Data Science"
+institution = "University of Southern California"
 avatar = "/bio.jpg"
 
 [social]
-# Contact information (leave blank or delete to hide)
+# Contact information
 
-email = "john.doe@example.com"
-location = "City, Country"
-location_url = "https://maps.google.com"
+email = "cyu96374@usc.edu"
+location = "Los Angeles, CA"
+location_url = "https://www.google.com/maps/place/University+of+Southern+California"
 location_details = [
-  "Room 123, Science Building,",
-  "University Avenue, City, Country"
+  "Los Angeles, CA 90089"
 ]
-google_scholar = "https://scholar.google.com"
-orcid = "https://orcid.org"
-github = "https://github.com"
-linkedin = "https://linkedin.com"
+google_scholar = "https://scholar.google.com/citations?user=SGe_dCwAAAAJ&hl=en"
+github = "https://github.com/AiChiMoCha"
+linkedin = "https://www.linkedin.com/in/chenxiao-yu-a813652a9/"
 
 [features]
 # Show a like button on the about page
@@ -45,25 +43,13 @@ target = "publications"
 href = "/publications"
 
 [[navigation]]
-title = "Teaching"
+title = "Others"
 type = "page"
-target = "teaching"
-href = "/teaching"
-
-[[navigation]]
-title = "Awards"
-type = "page"
-target = "awards"
-href = "/awards"
+target = "Others"
+href = "/Others"
 
 [[navigation]]
 title = "Services"
 type = "page"
 target = "services"
 href = "/services"
-
-[[navigation]]
-title = "CV"
-type = "page"
-target = "cv"
-href = "/cv"
