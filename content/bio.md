@@ -1,1 +1,1 @@
-Hello! I’m Chenxiao Yu (虞辰潇), pronounced “CHEN-shao YOO.” I am currently a last year M.S. student at the University of Southern California, supervised by [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/lab.html).
+Hello! I'm Chenxiao Yu, I am currently a last year M.S. student at the University of Southern California, advised by [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/lab.html) and [Prof. Morteza Dehghani](https://dornsife.usc.edu/profile/morteza-dehghani/).
