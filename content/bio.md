@@ -1,1 +1,1 @@
-Hello! I'm Chenxiao Yu, I am currently a last year M.S. student at the University of Southern California, advised by [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/lab.html) and [Prof. Morteza Dehghani](https://dornsife.usc.edu/profile/morteza-dehghani/).
+Hello! I'm Chenxiao Yu, a Ph.D. student in Computer Science at the University of Southern California, advised by [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/lab.html). I also closely collaborate with [Prof. Morteza Dehghani](https://dornsife.usc.edu/profile/morteza-dehghani/).

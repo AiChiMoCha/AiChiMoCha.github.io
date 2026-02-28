@@ -305,9 +305,14 @@ export default function Profile({ author, social, features, researchInterests }:
             {researchInterests && researchInterests.length > 0 && (
                 <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
                     <h3 className="font-semibold text-primary mb-3">Research Interests</h3>
-                    <div className="space-y-2 text-sm text-neutral-700 dark:text-neutral-500">
+                    <div className="flex flex-wrap gap-2">
                         {researchInterests.map((interest, index) => (
-                            <div key={index}>{interest}</div>
+                            <span
+                                key={index}
+                                className="inline-block text-xs font-medium px-2.5 py-1 rounded-full bg-white dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 shadow-sm"
+                            >
+                                {interest}
+                            </span>
                         ))}
                     </div>
                 </div>

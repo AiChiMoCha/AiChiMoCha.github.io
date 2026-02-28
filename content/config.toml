@@ -1,14 +1,14 @@
 [site]
 title = "Chenxiao Yu"
-description = "Student at the University of Southern California."
-favicon = "/favicon_io/favicon.ico" 
-last_updated = "November 29, 2025"
+description = "Ph.D. Student in Computer Science at the University of Southern California."
+favicon = "/favicon_io/favicon.ico"
+last_updated = "February 2026"
 
 [author]
 name = "Chenxiao Yu"
-title = "M.S. Student in Applied Data Science"
+title = "Ph.D. Student in Computer Science"
 institution = "University of Southern California"
-avatar = "/oldpic.jpg"
+avatar = "/DSCF8562 1.jpg"
 
 [social]
 # Contact information
