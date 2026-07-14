@@ -26,7 +26,7 @@ linkedin = "https://www.linkedin.com/in/chenxiao-yu-a813652a9/"
 
 [features]
 # Show a like button on the about page
-enable_likes = true
+enable_likes = false
 
 # Display all subpages on a single page
 enable_one_page_mode = false
@@ -51,7 +51,7 @@ href = "/publications"
 # href = "/Others"
 
 [[navigation]]
-title = "Services"
+title = "Service"
 type = "page"
 target = "services"
 href = "/services"
