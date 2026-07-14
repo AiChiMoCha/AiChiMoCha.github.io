@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import {
     EnvelopeIcon,
-    AcademicCapIcon,
     HeartIcon,
     MapPinIcon
 } from '@heroicons/react/24/outline';
@@ -13,6 +12,34 @@ import { MapPinIcon as MapPinSolidIcon, EnvelopeIcon as EnvelopeSolidIcon } from
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
 import { Github, Linkedin, Pin } from 'lucide-react';
 import { SiteConfig } from '@/lib/config';
+
+// Google Scholar icon - a serif "g" wearing a graduation cap
+const ScholarIcon = ({ className }: { className?: string }) => (
+    <svg
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={className}
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {/* Mortarboard, tilted over the g */}
+        <g transform="rotate(-10 11 5)">
+            <polygon points="11,1.8 18.5,5 11,8.2 3.5,5" />
+            <path d="M17.4 5.4 L17.4 8.8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" fill="none" />
+            <circle cx="17.4" cy="9.5" r="0.85" />
+        </g>
+        {/* The letter g */}
+        <text
+            x="11.5"
+            y="19.8"
+            textAnchor="middle"
+            fontFamily="Georgia, 'Times New Roman', serif"
+            fontWeight="700"
+            fontSize="17"
+        >
+            g
+        </text>
+    </svg>
+);
 
 // Custom ORCID icon component
 const OrcidIcon = ({ className }: { className?: string }) => (
@@ -83,7 +110,7 @@ export default function Profile({ author, social, features, researchInterests }:
         ...(social.google_scholar ? [{
             name: 'Google Scholar',
             href: social.google_scholar,
-            icon: AcademicCapIcon,
+            icon: ScholarIcon,
         }] : []),
         ...(social.orcid ? [{
             name: 'ORCID',
@@ -107,29 +134,29 @@ export default function Profile({ author, social, features, researchInterests }:
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="sticky top-8"
+            className="sticky top-24 lg:top-28"
         >
             {/* Profile Image */}
-            <div className="w-64 h-64 mx-auto mb-6 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105">
+            <div className="w-64 h-64 mx-auto mb-8 overflow-hidden rounded-md">
                 <Image
                     src={author.avatar}
                     alt={author.name}
                     width={256}
                     height={256}
-                    className="w-full h-full object-cover object-[32%_center]"
+                    className="w-full h-full object-cover object-[32%_center] grayscale hover:grayscale-0 transition-[filter] duration-700"
                     priority
                 />
             </div>
 
             {/* Name and Title */}
-            <div className="text-center mb-6">
-                <h1 className="text-3xl font-serif font-bold text-primary mb-2">
+            <div className="text-center mb-8">
+                <h1 className="font-serif text-[2rem] leading-tight tracking-tight font-bold text-primary mb-3">
                     {author.name}
                 </h1>
-                <p className="text-lg text-accent font-medium mb-1">
+                <p className="eyebrow text-neutral-600 mb-2">
                     {author.title}
                 </p>
-                <p className="text-neutral-600 mb-2">
+                <p className="font-serif italic text-[0.9375rem] text-neutral-500">
                     {author.institution}
                 </p>
             </div>
@@ -154,7 +181,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                     }}
                                     className={`p-2 sm:p-2 transition-colors duration-200 ${isAddressPinned
                                         ? 'text-accent'
-                                        : 'text-neutral-600 dark:text-neutral-400 hover:text-accent'
+                                        : 'text-neutral-500 hover:text-accent'
                                         }`}
                                     aria-label={link.name}
                                 >
@@ -172,7 +199,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                             initial={{ opacity: 0, y: 10, scale: 0.8 }}
                                             animate={{ opacity: 1, y: -10, scale: 1 }}
                                             exit={{ opacity: 0, y: -20, scale: 0.8 }}
-                                            className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-neutral-800 text-white px-4 py-3 rounded-lg text-sm font-medium shadow-lg max-w-[calc(100vw-2rem)] sm:max-w-none sm:whitespace-nowrap ${lastClickedTooltip === 'address' ? 'z-20' : 'z-10'
+                                            className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-background text-neutral-700 px-5 py-4 text-sm rounded-md border border-accent/50 shadow-lg shadow-black/5 max-w-[calc(100vw-2rem)] sm:max-w-none sm:whitespace-nowrap ${lastClickedTooltip === 'address' ? 'z-20' : 'z-10'
                                                 }`}
                                             onMouseEnter={() => {
                                                 if (!isAddressPinned) setShowAddress(true);
@@ -182,7 +209,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                         >
                                             <div className="text-center">
                                                 <div className="flex items-center justify-center space-x-2 mb-1">
-                                                    <p className="font-semibold">Work Address</p>
+                                                    <p className="eyebrow text-accent">Work Address</p>
                                                     {!isAddressPinned && (
                                                         <div className="flex items-center space-x-0.5 text-xs text-neutral-400 opacity-60">
                                                             <Pin className="h-2.5 w-2.5" />
@@ -199,7 +226,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                                             href={social.location_url}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            className="inline-flex items-center justify-center space-x-2 bg-accent hover:bg-accent-dark text-white px-3 py-1 rounded-md text-xs font-medium transition-colors duration-200 w-full sm:w-auto"
+                                                            className="inline-flex items-center justify-center space-x-2 rounded-md border border-accent text-accent hover:bg-accent hover:text-background px-3 py-1 text-xs font-medium transition-colors duration-200 w-full sm:w-auto"
                                                         >
                                                             <MapPinIcon className="h-4 w-4" />
                                                             <span>Google Map</span>
@@ -208,7 +235,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                                 </div>
 
                                             </div>
-                                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-800"></div>
+                                            <div className="absolute -bottom-[5px] left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-background border-b border-r border-accent/50 rotate-45"></div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
@@ -231,7 +258,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                     }}
                                     className={`p-2 sm:p-2 transition-colors duration-200 ${isEmailPinned
                                         ? 'text-accent'
-                                        : 'text-neutral-600 dark:text-neutral-400 hover:text-accent'
+                                        : 'text-neutral-500 hover:text-accent'
                                         }`}
                                     aria-label={link.name}
                                 >
@@ -249,7 +276,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                             initial={{ opacity: 0, y: 10, scale: 0.8 }}
                                             animate={{ opacity: 1, y: -10, scale: 1 }}
                                             exit={{ opacity: 0, y: -20, scale: 0.8 }}
-                                            className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-neutral-800 text-white px-4 py-3 rounded-lg text-sm font-medium shadow-lg max-w-[calc(100vw-2rem)] sm:max-w-none sm:whitespace-nowrap ${lastClickedTooltip === 'email' ? 'z-20' : 'z-10'
+                                            className={`absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-background text-neutral-700 px-5 py-4 text-sm rounded-md border border-accent/50 shadow-lg shadow-black/5 max-w-[calc(100vw-2rem)] sm:max-w-none sm:whitespace-nowrap ${lastClickedTooltip === 'email' ? 'z-20' : 'z-10'
                                                 }`}
                                             onMouseEnter={() => {
                                                 if (!isEmailPinned) setShowEmail(true);
@@ -259,7 +286,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                         >
                                             <div className="text-center">
                                                 <div className="flex items-center justify-center space-x-2 mb-1">
-                                                    <p className="font-semibold">Email</p>
+                                                    <p className="eyebrow text-accent">Email</p>
                                                     {!isEmailPinned && (
                                                         <div className="flex items-center space-x-0.5 text-xs text-neutral-400 opacity-60">
                                                             <Pin className="h-2.5 w-2.5" />
@@ -271,7 +298,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                                 <div className="mt-2">
                                                     <a
                                                         href={link.href}
-                                                        className="inline-flex items-center justify-center space-x-2 bg-accent hover:bg-accent-dark text-white px-3 py-1 rounded-md text-xs font-medium transition-colors duration-200 w-full sm:w-auto"
+                                                        className="inline-flex items-center justify-center space-x-2 rounded-md border border-accent text-accent hover:bg-accent hover:text-background px-3 py-1 text-xs font-medium transition-colors duration-200 w-full sm:w-auto"
                                                     >
                                                         <EnvelopeIcon className="h-4 w-4" />
                                                         <span className="sm:hidden">Send</span>
@@ -279,7 +306,7 @@ export default function Profile({ author, social, features, researchInterests }:
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neutral-800"></div>
+                                            <div className="absolute -bottom-[5px] left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-background border-b border-r border-accent/50 rotate-45"></div>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
@@ -292,7 +319,7 @@ export default function Profile({ author, social, features, researchInterests }:
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2 sm:p-2 text-neutral-600 dark:text-neutral-400 hover:text-accent transition-colors duration-200"
+                            className="p-2 sm:p-2 text-neutral-500 hover:text-accent transition-colors duration-200"
                             aria-label={link.name}
                         >
                             <IconComponent className="h-5 w-5" />
@@ -303,13 +330,13 @@ export default function Profile({ author, social, features, researchInterests }:
 
             {/* Research Interests */}
             {researchInterests && researchInterests.length > 0 && (
-                <div className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
-                    <h3 className="font-semibold text-primary mb-3">Research Interests</h3>
-                    <div className="flex flex-wrap gap-2">
+                <div className="mb-8 border-t border-rule pt-5">
+                    <h3 className="eyebrow text-primary mb-4 text-center">Research Interests</h3>
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-2">
                         {researchInterests.map((interest, index) => (
                             <span
                                 key={index}
-                                className="inline-block text-xs font-medium px-2.5 py-1 rounded-full bg-white dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-600 shadow-sm"
+                                className="inline-block text-[0.6875rem] tracking-wide uppercase px-2.5 py-1 rounded-md border border-neutral-300 text-neutral-600 text-center whitespace-pre-line"
                             >
                                 {interest}
                             </span>
@@ -326,9 +353,9 @@ export default function Profile({ author, social, features, researchInterests }:
                             onClick={handleLike}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${hasLiked
-                                ? 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400'
-                                : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-500 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400 cursor-pointer'
+                            className={`eyebrow flex items-center space-x-2 px-4 py-2 rounded-md border transition-colors duration-200 ${hasLiked
+                                ? 'border-accent text-accent'
+                                : 'border-neutral-300 text-neutral-500 hover:border-accent hover:text-accent cursor-pointer'
                                 }`}
                         >
                             {hasLiked ? (
@@ -346,10 +373,10 @@ export default function Profile({ author, social, features, researchInterests }:
                                     initial={{ opacity: 0, y: 10, scale: 0.8 }}
                                     animate={{ opacity: 1, y: -10, scale: 1 }}
                                     exit={{ opacity: 0, y: -20, scale: 0.8 }}
-                                    className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-accent text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg whitespace-nowrap"
+                                    className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full bg-background text-accent px-4 py-2 text-sm font-medium rounded-md border border-accent/50 shadow-lg shadow-black/5 whitespace-nowrap"
                                 >
                                     Thanks! 😊
-                                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-accent"></div>
+                                    <div className="absolute -bottom-[5px] left-1/2 transform -translate-x-1/2 w-2.5 h-2.5 bg-background border-b border-r border-accent/50 rotate-45"></div>
                                 </motion.div>
                             )}
                         </AnimatePresence>

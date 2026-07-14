@@ -34,7 +34,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800">
+      <div className="flex items-center justify-center w-9 h-9">
         <div className="w-4 h-4 rounded-full bg-neutral-300 animate-pulse" />
       </div>
     );
@@ -45,8 +45,6 @@ export function ThemeToggle() {
   return (
     <div className="relative">
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
         type="button"
         onMouseDown={(e) => e.preventDefault()}
         onClick={() => {
@@ -56,11 +54,9 @@ export function ThemeToggle() {
           setTheme(next);
         }}
         className={cn(
-          'flex items-center justify-center w-10 h-10 rounded-lg',
-          'border border-neutral-200 bg-background hover:bg-neutral-50',
-          'dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800 dark:hover:bg-neutral-700',
-          'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
-          'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
+          'flex items-center justify-center w-9 h-9',
+          'transition-colors duration-200 focus:outline-none',
+          'text-neutral-500 hover:text-primary'
         )}
         title={`Current theme: ${currentTheme.label}. Click to cycle theme.`}
       >

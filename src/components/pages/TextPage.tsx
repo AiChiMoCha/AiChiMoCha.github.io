@@ -18,18 +18,21 @@ export default function TextPage({ config, content, embedded = false }: TextPage
             transition={{ duration: 0.6, delay: 0.4 }}
             className={embedded ? "" : "max-w-3xl mx-auto"}
         >
-            <h1 className={`${embedded ? "text-2xl" : "text-4xl"} font-serif font-bold text-primary mb-4`}>{config.title}</h1>
-            {config.description && (
-                <p className={`${embedded ? "text-base" : "text-lg"} text-neutral-600 dark:text-neutral-500 mb-8 max-w-2xl`}>
-                    {config.description}
-                </p>
-            )}
-            <div className="text-neutral-700 dark:text-neutral-600 leading-relaxed">
+            <div className="mb-8">
+                <h1 className={`${embedded ? "text-[2rem]" : "text-[2.75rem]"} font-serif font-bold tracking-tight leading-tight text-primary mb-2`}>{config.title}</h1>
+                {config.description && (
+                    <p className="font-serif italic text-base text-neutral-500 max-w-2xl mb-4">
+                        {config.description}
+                    </p>
+                )}
+                <div className="rule-double" />
+            </div>
+            <div className="text-[0.9375rem] text-neutral-700 leading-[1.85]">
                 <ReactMarkdown
                     components={{
-                        h1: ({ children }) => <h1 className="text-3xl font-serif font-bold text-primary mt-8 mb-4">{children}</h1>,
-                        h2: ({ children }) => <h2 className="text-2xl font-serif font-bold text-primary mt-8 mb-4 border-b border-neutral-200 dark:border-neutral-800 pb-2">{children}</h2>,
-                        h3: ({ children }) => <h3 className="text-xl font-semibold text-primary mt-6 mb-3">{children}</h3>,
+                        h1: ({ children }) => <h1 className="font-serif text-3xl font-bold text-primary mt-8 mb-4">{children}</h1>,
+                        h2: ({ children }) => <h2 className="font-serif text-2xl font-bold text-primary mt-8 mb-4">{children}</h2>,
+                        h3: ({ children }) => <h3 className="font-serif text-xl font-semibold text-primary mt-6 mb-3">{children}</h3>,
                         p: ({ children }) => <p className="mb-4 last:mb-0">{children}</p>,
                         ul: ({ children }) => <ul className="list-disc list-inside mb-4 space-y-1 ml-4">{children}</ul>,
                         ol: ({ children }) => <ol className="list-decimal list-inside mb-4 space-y-1 ml-4">{children}</ol>,
@@ -39,16 +42,16 @@ export default function TextPage({ config, content, embedded = false }: TextPage
                                 {...props}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-accent font-medium hover:underline transition-colors"
+                                className="text-primary font-medium underline decoration-neutral-300 underline-offset-4 hover:text-accent hover:decoration-accent transition-colors duration-200"
                             />
                         ),
                         blockquote: ({ children }) => (
-                            <blockquote className="border-l-4 border-accent/50 pl-4 italic my-4 text-neutral-600 dark:text-neutral-500">
+                            <blockquote className="border-l-2 border-primary pl-4 font-serif italic my-4 text-neutral-600">
                                 {children}
                             </blockquote>
                         ),
                         strong: ({ children }) => <strong className="font-semibold text-primary">{children}</strong>,
-                        em: ({ children }) => <em className="italic text-neutral-600 dark:text-neutral-500">{children}</em>,
+                        em: ({ children }) => <em className="italic text-neutral-600">{children}</em>,
                     }}
                 >
                     {content}

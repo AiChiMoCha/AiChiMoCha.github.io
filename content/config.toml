@@ -1,5 +1,5 @@
 [site]
-title = "Hi, I'm Chenxiao Yu"
+title = "Hi there, I'm Chenxiao"
 description = "Ph.D. Student in Computer Science at the University of Southern California."
 favicon = "/favicon_io/favicon.ico"
 last_updated = "February 2026"
@@ -17,6 +17,7 @@ email = "cyu96374@usc.edu"
 location = "Los Angeles, CA"
 location_url = "https://www.google.com/maps/place/University+of+Southern+California"
 location_details = [
+  "Ginsburg Hall",
   "Los Angeles, CA 90089"
 ]
 google_scholar = "https://scholar.google.com/citations?user=SGe_dCwAAAAJ&hl=en"
@@ -42,11 +43,12 @@ type = "page"
 target = "publications"
 href = "/publications"
 
-[[navigation]]
-title = "Others"
-type = "page"
-target = "Others"
-href = "/Others"
+# Others page hidden for now (no content yet) — uncomment to restore
+# [[navigation]]
+# title = "Others"
+# type = "page"
+# target = "Others"
+# href = "/Others"
 
 [[navigation]]
 title = "Services"

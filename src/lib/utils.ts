@@ -18,6 +18,13 @@ export function formatYear(date: string | Date): string {
   }).format(new Date(date));
 }
 
+// Collapse noisy bib venues like "arXiv preprint arXiv:2602.00364" for display
+export function formatVenue(venue?: string): string {
+  if (!venue) return '';
+  if (/arxiv/i.test(venue)) return 'arXiv Preprint';
+  return venue;
+}
+
 export function generateSlug(text: string): string {
   return text
     .toLowerCase()

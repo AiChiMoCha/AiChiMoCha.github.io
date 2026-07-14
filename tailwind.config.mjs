@@ -12,8 +12,13 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          'Inter',
+          'Raleway',
           ...defaultTheme.fontFamily.sans,
+        ],
+        serif: [
+          '"Playfair Display"',
+          'Georgia',
+          ...defaultTheme.fontFamily.serif,
         ],
       },
       colors: {
