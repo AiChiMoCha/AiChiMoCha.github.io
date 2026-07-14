@@ -47,8 +47,14 @@ export default function SelectedPublications({ publications, title = 'Selected P
                             <p className="eyebrow text-neutral-400 mb-1.5">
                                 {formatVenue(pub.journal || pub.conference)}{(pub.journal || pub.conference) && pub.year ? ' · ' : ''}{pub.year}
                             </p>
-                            <h3 className="font-serif text-xl font-semibold text-primary leading-snug mb-1.5 group-hover:text-accent transition-colors duration-200">
-                                {pub.title}
+                            <h3 className="font-serif text-xl font-semibold text-primary leading-snug mb-1.5">
+                                <Link
+                                    href={enableOnePageMode ? `/#${pub.id}` : `/publications#${pub.id}`}
+                                    prefetch={true}
+                                    className="group-hover:text-accent transition-colors duration-200"
+                                >
+                                    {pub.title}
+                                </Link>
                             </h3>
                             <p className="text-sm text-neutral-500 mb-1">
                                 {pub.authors.map((author, idx) => (

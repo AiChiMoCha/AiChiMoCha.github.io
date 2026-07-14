@@ -153,10 +153,11 @@ export default function PublicationsList({ config, publications, embedded = fals
                     filteredPublications.map((pub, index) => (
                         <motion.article
                             key={pub.id}
+                            id={pub.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.08 * index }}
-                            className="flex gap-5 py-7 border-b border-neutral-200 last:border-b-0"
+                            className="flex gap-5 py-7 border-b border-neutral-200 last:border-b-0 scroll-mt-24 lg:scroll-mt-28"
                         >
                             <span className="hidden sm:block w-8 flex-shrink-0 font-serif italic text-xl text-neutral-300 leading-none pt-0.5">
                                 {String(index + 1).padStart(2, '0')}
